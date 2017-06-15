@@ -22,17 +22,17 @@
       <div id="main-grid" ng-repeat="(pIndex,test) in grid">
         <span ng-repeat="i in test track by $index">
          <!--  <span>{{grid[pIndex][$index].id}}</span> -->
-         <span ng-if="grid[pIndex][$index].revealed === false" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img class="img-responsive" src="img/box.JPG"></span>
+         <span ng-if="grid[pIndex][$index].revealed === false" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img class="img-responsive" src="/img/box.JPG"></span>
 
-         <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].isBomb === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="img/bomb.JPG"></span>
+         <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].isBomb === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/img/bomb.JPG"></span>
 
-         <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].points === 1" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="img/boxclicked.JPG"></span>
-
-
-         <span ng-if="grid[pIndex][$index].points === 3 && grid[pIndex][$index].revealed === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="img/box4.JPG"></span>
+         <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].points === 1" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/img/boxclicked.JPG"></span>
 
 
-         <span ng-if="grid[pIndex][$index].points === 2 && grid[pIndex][$index].revealed === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="img/box3.JPG"></span>
+         <span ng-if="grid[pIndex][$index].points === 3 && grid[pIndex][$index].revealed === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/img/box4.JPG"></span>
+
+
+         <span ng-if="grid[pIndex][$index].points === 2 && grid[pIndex][$index].revealed === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/img/box3.JPG"></span>
        </span>
      </div>
    </div>
