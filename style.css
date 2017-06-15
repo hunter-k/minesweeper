@@ -1,0 +1,33 @@
+
+
+
+#main-grid {
+	margin-right: auto;
+	margin-left: auto;
+	width: 600px;
+    text-align: center;
+    overflow: auto;
+}
+
+#score-board {
+		margin-right: auto;
+	margin-left: auto;
+	width: 600px;
+    overflow: auto;
+    text-align: center;
+
+}
+
+.score {
+	font-family: courier;
+	background-color: black;
+	color: yellow;
+}
+
+.mine-box {
+	margin-bottom: 5px;
+}
+
+.img-responsive {
+	display: inline;
+}

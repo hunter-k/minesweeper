@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="mineSweeper" ng-controller="mineSweeperCon">
+<head>
+  <meta charset="utf-8">
+  <title>Mine Sweeper</title>
+  <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div clas="row">
+    <div class="col-md-3 col-xs-0">
+    </div>
+    <div class="col-md-6 col-xs-12">
+     <div id="score-board">
+      <button class="score" type="button" ng-click="newGame()"><h2>New Game</h2></button> <br>
+      <h2 class="score">Score: {{score}} </h2>
+      <h2 class="score"> Time Left: <span ng-bind="counter"></span> seconds </h2>
+    </div>
+      <div id="main-grid" ng-repeat="(pIndex,test) in grid">
+        <span ng-repeat="i in test track by $index">
+         <!--  <span>{{grid[pIndex][$index].id}}</span> -->
+         <span ng-if="grid[pIndex][$index].revealed === false" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img class="img-responsive" src="/box.JPG"></span>
+
+         <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].isBomb === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/bomb.JPG"></span>
+
+         <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].points === 1" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/boxclicked.JPG"></span>
+
+
+         <span ng-if="grid[pIndex][$index].points === 3 && grid[pIndex][$index].revealed === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/box4.JPG"></span>
+
+
+         <span ng-if="grid[pIndex][$index].points === 2 && grid[pIndex][$index].revealed === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/box3.JPG"></span>
+       </span>
+     </div>
+   </div>
+ </div>
+
+ <script type="text/javascript" src="lib/angular.min.js"></script>
+ <script type="text/javascript" src="lib/angular-route.min.js"></script>
+ <script src="lib/ui-bootstrap-tpls-2.5.0.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="app.js"></script>
+ <script type="text/javascript" src="factory.js"></script>
+ <script type="text/javascript" src="controllers.js"></script>
+</body>
+</html>
