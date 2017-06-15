@@ -22,7 +22,7 @@
       <div id="main-grid" ng-repeat="(pIndex,test) in grid">
         <span ng-repeat="i in test track by $index">
          <!--  <span>{{grid[pIndex][$index].id}}</span> -->
-         <span ng-if="grid[pIndex][$index].revealed === false" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img class="img-responsive" src="minesweeper/img/box.JPG"></span>
+         <span ng-if="grid[pIndex][$index].revealed === false" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img class="img-responsive" src="./img/box.JPG"></span>
 
          <span ng-if="grid[pIndex][$index].revealed === true && grid[pIndex][$index].isBomb === true" class="mine-box" ng-click="clicked(grid[pIndex][$index],pIndex,$index)"><img src="/img/bomb.JPG"></span>
 
