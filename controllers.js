@@ -1,6 +1,7 @@
 var app = angular.module('mineSweeper');
 
 app.controller('mineSweeperCon', function($scope, msFac, $timeout) {
+	$scope.lost = false;
 	$scope.paused = true;
 	$scope.newGame = function () {
 		console.log('clicked');
@@ -9,6 +10,7 @@ app.controller('mineSweeperCon', function($scope, msFac, $timeout) {
 		$scope.grid = msFac.objectifyBoard(mappedBoard);
 		$scope.score = 0;
 		$scope.paused = true;
+		$scope.lost = false;
 		$scope.stop();
 		$scope.counter = 60;
 		$scope.countdown(); 
@@ -19,7 +21,8 @@ app.controller('mineSweeperCon', function($scope, msFac, $timeout) {
 			$scope.paused = false;
 			if (curObj.isBomb === true) {
 				$scope.grid[x][y].revealed = true;
-				alert("you lose!");
+				$scope.counter = "You've Lost";
+				$scope.lost = true;
 				msFac.revealed($scope.grid);
 				$scope.paused = true;
 			}
@@ -42,26 +45,20 @@ app.controller('mineSweeperCon', function($scope, msFac, $timeout) {
 	clearAreaHelper = function (x,y,board){
 		clearArea(x, y - 1, board);
 		clearArea(x, y + 1, board);
-		clearArea(x + 1, y - 1, board);
-		clearArea(x + 1, y + 1, board);
 
-		clearArea(x - 1, y - 1, board);
 		clearArea(x - 1, y, board);
-		clearArea(x - 1, y + 1, board);
 		clearArea(x + 1, y, board);
-
 	}
 
 	clearArea = function (x,y,board) {
-		if (board[x][y].points != 1) {
-			console.log('I am not 1');
-			return;
-		} 
-		if (x > 11 || y < 0 || x < 0 || y > 11) {
-			console.log('I cant even');
+		if (x > 10 || y < 0 || x < 0 || y > 10) {
 			return;
 		}
+		if (board[x][y].points != 1 || board[x][y].revealed === true) {
+			return;
+		} 
 		board[x][y].revealed = true;
+		clearAreaHelper(x,y,board);
 	}
 
 	$scope.counter = 60;
@@ -72,7 +69,9 @@ app.controller('mineSweeperCon', function($scope, msFac, $timeout) {
 			if(!$scope.paused) {$scope.counter--;}
 			if ($scope.counter === -1) {
 				msFac.revealed($scope.grid);
-				alert("Time is up!");
+				$scope.counter = "You've Lost";
+				$scope.lost = true;
+				$scope.paused = true;
 			}   
 			$scope.countdown();   
 		}, 1000);

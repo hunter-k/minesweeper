@@ -64,6 +64,7 @@ app.factory('msFac', function() {
 			}
 			idLetter = nextLetter(idLetter);
 		}
+		console.log(board);
 		return board;
 	}, revealed: function (board) {
 		for (x = 0; x < board.length; x++) {

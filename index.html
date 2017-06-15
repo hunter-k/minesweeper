@@ -15,7 +15,9 @@
      <div id="score-board">
       <button class="score" type="button" ng-click="newGame()"><h2>New Game</h2></button> <br>
       <h2 class="score">Score: {{score}} </h2>
-      <h2 class="score"> Time Left: <span ng-bind="counter"></span> seconds </h2>
+      <h2 class="score">
+      <span ng-hide="lost">Time Left:</span>  <span ng-bind="counter"></span> <span ng-hide="lost"> seconds </span></h2>
+      </h2>
     </div>
       <div id="main-grid" ng-repeat="(pIndex,test) in grid">
         <span ng-repeat="i in test track by $index">
